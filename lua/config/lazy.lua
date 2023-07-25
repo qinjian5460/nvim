@@ -26,4 +26,5 @@ require("lazy").setup({
     require("plugins.dap"),
     require("plugins.markdown"),
     require("plugins.telescope"),
+    require("plugins.git"),
 })
