@@ -45,39 +45,42 @@ return{
           })
         end
       },
-      {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-          vim.g.indent_blankline_filetype_exclude = {
-            "help",
-            "dashboard",
-            "barbar",
-            "NvimTree",
-            "Trouble",
-              "mason",
-          }
-          vim.cmd [[highlight IndentBlanklineIndent1 guifg=#30465d guibg=#373a3b gui=nocombine]]
-          vim.cmd [[highlight IndentBlanklineIndent2 guifg=#30465d guibg=#2c3b40 gui=nocombine]]
-          vim.cmd [[highlight IndentBlanklineIndent3 guifg=#30465d guibg=#382f4b gui=nocombine]]
-          vim.cmd [[highlight IndentBlanklineIndent4 guifg=#30465d guibg=#161e37 gui=nocombine]]
-            require("indent_blankline").setup {
-              char = "▎",
-              char_highlight_list = {
-                  "IndentBlanklineIndent1",
-                  "IndentBlanklineIndent2",
-                  "IndentBlanklineIndent3",
-                  "IndentBlanklineIndent4",
-              },
-              space_char_highlight_list = {
-                  "IndentBlanklineIndent1",
-                  "IndentBlanklineIndent2",
-                  "IndentBlanklineIndent3",
-                  "IndentBlanklineIndent4",
-              },
-              show_trailing_blankline_indent = false,
-          } 
-        end
-      },
+      -- {
+      --   "lukas-reineke/indent-blankline.nvim",
+      --   config = function()
+      --     vim.g.indent_blankline_filetype_exclude = {
+      --       "help",
+      --       "dashboard",
+      --       "barbar",
+      --       "NvimTree",
+      --       "Trouble",
+      --         "mason",
+      --     }
+      --     -- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#30465d guibg=#373a3b gui=nocombine]]
+      --     vim.cmd [[highlight IndentBlanklineIndent1 guifg=#30465d guibg=#2c3b40 gui=nocombine]]
+      --     vim.cmd [[highlight IndentBlanklineIndent2 guifg=#30465d guibg=#382f4b gui=nocombine]]
+      --     vim.cmd [[highlight IndentBlanklineIndent3 guifg=#30465d guibg=#161e37 gui=nocombine]]
+      --     vim.cmd("let g:indent_blankline_context_char = '▎'")
+      --       require("indent_blankline").setup {
+      --         show_current_context = true,
+      --         show_current_context_start = true,
+      --         char = "▎",
+      --         char_highlight_list = {
+      --             "IndentBlanklineIndent1",
+      --             "IndentBlanklineIndent2",
+      --             "IndentBlanklineIndent3",
+      --             -- "IndentBlanklineIndent4",
+      --         },
+      --         space_char_highlight_list = {
+      --             "IndentBlanklineIndent1",
+      --             "IndentBlanklineIndent2",
+      --             "IndentBlanklineIndent3",
+      --             -- "IndentBlanklineIndent4",
+      --         },
+      --         show_trailing_blankline_indent = false,
+      --     } 
+      --   end
+      -- },
       {
         'numToStr/Comment.nvim',
         config = function()
@@ -124,5 +127,35 @@ return{
         config = function ()
             require("flash").toggle(false)
         end
+      },
+      {
+          "shellRaining/hlchunk.nvim", 
+          event = { "UIEnter" },
+          config = function()
+              require('hlchunk').setup({
+                  chunk = {
+                    chars = {
+                        horizontal_line = "─",
+                        vertical_line = "│",
+                        left_top = "╭",
+                        left_bottom = "╰",
+                        right_arrow = ">",
+                    },
+                    style = "#e5c07b",
+                    },
+                  blank = {
+                    enable = true,
+                    chars = {
+                        " ",
+                    },
+                    style = {
+                        -- { bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("cursorline")), "bg", "gui") },
+                        { bg = "#33373d", fg = "#8a8a8a" },
+                        { bg = "#2a3740", fg = "#8a8a8a" },
+                        { bg = "#332e4a", fg = "#8a8a8a" },
+                    },
+                }
+            })
+          end
       },
 }

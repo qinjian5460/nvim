@@ -18,16 +18,16 @@ highlight Tabline guibg = reverse
 highlight NormalNC guibg = reverse
 highlight WinSeparator guibg = reverse
 " set fillchars=vert:┃
-"hi ActiveWindow guibg=#1f2331
-" hi InactiveWindow guibg=reverse
-" augroup WindowManagement
-"   autocmd!
-"   autocmd WinEnter * call Handle_Win_Enter()
-" augroup END
-" " Change highlight group of active/inactive windows
-" function! Handle_Win_Enter()
-"   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
-" endfunction
+hi ActiveWindow guibg=#1f2331
+hi InactiveWindow guibg=reverse
+augroup WindowManagement
+  autocmd!
+  autocmd WinEnter * call Handle_Win_Enter()
+augroup END
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+  setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+endfunction
 
 "let g:tagbar_ctags_bin = '/opt/homebrew/bin/ctags'
 "let g:python3_host_prog = '/opt/homebrew/Cellar/python@3.9/3.9.7/bin/python3.9'

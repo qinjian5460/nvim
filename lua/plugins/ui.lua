@@ -242,7 +242,7 @@ return{
     },
     {
         'nvimdev/lspsaga.nvim',
-        event = "InsertEnter",
+        -- event = "InsertEnter",
         dependencies = {
         'nvim-treesitter/nvim-treesitter', -- optional
         'nvim-tree/nvim-web-devicons'     -- optional
@@ -327,12 +327,12 @@ return{
     },
     {
       "folke/which-key.nvim",
-  event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
-  opts = {
-  }  
+      event = "VeryLazy",
+      init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      end,
+      opts = {
+      }  
     },
 }
