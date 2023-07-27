@@ -18,8 +18,8 @@ highlight Tabline guibg = reverse
 highlight NormalNC guibg = reverse
 highlight WinSeparator guibg = reverse
 " set fillchars=vert:┃
-hi ActiveWindow guibg=#1f2331
-hi InactiveWindow guibg=reverse
+hi ActiveWindow guibg=reverse
+hi InactiveWindow guibg=#1f2331
 augroup WindowManagement
   autocmd!
   autocmd WinEnter * call Handle_Win_Enter()

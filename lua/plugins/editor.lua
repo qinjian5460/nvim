@@ -26,8 +26,8 @@ return{
             -- when 'enable_deceleration = true', 'deceleration_table = { {200, 3}, {300, 7}, {450, 11}, {600, 15}, {750, 21}, {900, 9999} }'
             deceleration_table = { {150, 9999} }
         })
-        vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', {})
-        vim.api.nvim_set_keymap('n', 'k', '<Plug>(accelerated_jk_gk)', {})
+          vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', {})
+          vim.api.nvim_set_keymap('n', 'k', '<Plug>(accelerated_jk_gk)', {})
         end
       },
       {
@@ -122,10 +122,17 @@ return{
           { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
           { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
           { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-          -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+          { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         },
         config = function ()
-            require("flash").toggle(false)
+            -- require("flash").jump({
+            --       modes = {
+            --         char = {
+            --           jump_labels = true,
+            --         },
+            --     },
+            -- })
+            -- require("flash").toggle(true)
         end
       },
       {
@@ -157,5 +164,28 @@ return{
                 }
             })
           end
+      },
+      {
+          "mg979/vim-visual-multi",
+          keys = { "<leader><C-n>", },
+          config = function ()
+                vim.keymap.set("n", "<leader><C-n>", "<Plug>(VM-Add-Cursor-At-Pos)", { noremap = true })
+              vim.cmd([[
+                let g:VM_maps = {}
+                let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+                let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+                let g:VM_maps["Select l"]           = '<S-Right>'       " start selecting left
+                let g:VM_maps["Select h"]           = '<S-Left>'        " start selecting right
+                let g:VM_maps["Select Cursor Down"] = '<C-n>'      " start selecting down
+                let g:VM_maps["Select Cursor Up"]   = '<C-p>'        " start selecting up
+              ]])
+          end
+      },
+      {
+        'declancm/cinnamon.nvim',
+        event = { "UIEnter" },
+        config = function() 
+            require('cinnamon').setup() 
+        end  
       },
 }

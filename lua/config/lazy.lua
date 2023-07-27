@@ -27,4 +27,6 @@ require("lazy").setup({
     require("plugins.markdown"),
     require("plugins.telescope"),
     require("plugins.git"),
+    require("plugins.python"),
+    -- require("plugins.remote"),
 })

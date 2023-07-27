@@ -33,9 +33,9 @@ return{
                 }
             end
     },
-    {
-        'mbbill/undotree',
-    },
+    -- {
+    --     'mbbill/undotree',
+    -- },
     {
         'kevinhwang91/rnvimr',
         cmd = "RnvimrToggle",
@@ -243,6 +243,7 @@ return{
     {
         'nvimdev/lspsaga.nvim',
         -- event = "InsertEnter",
+        event = 'LspAttach',
         dependencies = {
         'nvim-treesitter/nvim-treesitter', -- optional
         'nvim-tree/nvim-web-devicons'     -- optional

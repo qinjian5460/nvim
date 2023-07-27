@@ -1,6 +1,7 @@
 return{
     {
         "nvim-treesitter/nvim-treesitter",
+        event = 'LspAttach',
         build = ":TSUpdate",
         config = function()
             require'nvim-treesitter.configs'.setup {
@@ -52,6 +53,7 @@ return{
     },
     {
         'HiPhish/nvim-ts-rainbow2',
+        event = 'LspAttach',
         dependencies = {
         "nvim-treesitter/nvim-treesitter",
         },
