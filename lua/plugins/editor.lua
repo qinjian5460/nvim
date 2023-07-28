@@ -83,6 +83,8 @@ return{
       -- },
       {
         'numToStr/Comment.nvim',
+        -- keys = { "gc", mode = "n",},
+        -- keys = { "gcc", mode = "v" },
         config = function()
             require("Comment").setup()
         end
