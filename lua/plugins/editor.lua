@@ -183,11 +183,11 @@ return{
               ]])
           end
       },
-      {
-        'declancm/cinnamon.nvim',
-        event = { "UIEnter" },
-        config = function() 
-            require('cinnamon').setup() 
-        end  
-      },
+      -- {
+      --   'declancm/cinnamon.nvim',
+      --   event = { "UIEnter" },
+      --   config = function() 
+      --       require('cinnamon').setup() 
+      --   end  
+      -- },
 }
