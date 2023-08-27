@@ -26,12 +26,14 @@ vim.keymap.set("n", "<C-CR>", ":Lspsaga show_line_diagnostics<CR>", {noremap = t
 vim.keymap.set("n", "<leader>id", ":Lspsaga peek_definition<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>dz", ":DapContinue<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>d=", ":DapToggleBreakpoint<CR>", {noremap = ture})
-vim.keymap.set("n", "<leader>/f", ":Telescope fd<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/w", ":Telescope grep_string<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>/f", ":Telescope fd theme=dropdown<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>/w", ":Telescope grep_string theme=dropdown<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>/p", ":Telescope projects<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>/t", ":Telescope live_grep theme=dropdown<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { noremap = true })
+vim.cmd("tnoremap <silent> <C-n> <C-\\><C-n>")
 vim.cmd([[
     imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
     smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'

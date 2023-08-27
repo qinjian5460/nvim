@@ -29,5 +29,6 @@ require("lazy").setup({
     require("plugins.git"),
     require("plugins.python"),
     require("plugins.latex"),
+    require("plugins.tmux"),
     -- require("plugins.remote"),
 })
