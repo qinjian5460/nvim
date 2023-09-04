@@ -5,10 +5,13 @@ return{
         dependencies = {
             'neovim/nvim-lspconfig',
             'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/vim-vsnip-integ',
-            'rafamadriz/friendly-snippets',
+            'SirVer/ultisnips',
+            'quangnguyen30192/cmp-nvim-ultisnips',
+            'honza/vim-snippets',
+            -- 'hrsh7th/cmp-vsnip',
+            -- 'hrsh7th/vim-vsnip',
+            -- 'hrsh7th/vim-vsnip-integ',
+            -- 'rafamadriz/friendly-snippets',
             'hrsh7th/cmp-path',
         },
         config = function()
@@ -43,6 +46,7 @@ return{
 
             -- Setup nvim-cmp.
             -- local cmp = require'cmp'
+            local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
             local cmp = require("cmp")
             -- local lspkind = require('lspkind')
             cmp.setup({
@@ -67,13 +71,16 @@ return{
                   end,
                 },
                 snippet = {
+                    expand = function(args)
+                        vim.fn["UltiSnips#Anon"](args.body)
+                    end,
                 -- REQUIRED - you must specify a snippet engine
-                expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                -- expand = function(args)
+                -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
                 -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                 -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
                 -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
-                end,
+                -- end,
                 },
             mapping = {
             -- ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -89,35 +96,47 @@ return{
             -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
             -- ['<C-Space>'] = cmp.mapping.complete(),
             -- ['<C-e>'] = cmp.mapping.abort(),
+            ["<Tab>"] = cmp.mapping(
+                function(fallback)
+                    cmp_ultisnips_mappings.compose { "expand","jump_forwards", "select_next_item" }(fallback)
+                end,
+                { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+                ),
+            ["<S-tab>"] = cmp.mapping(
+                function(fallback)
+                    cmp_ultisnips_mappings.compose { "expand", "jump_backwards","select_prev_item" }(fallback)
+                end,
+                { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+                ),
             ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             ["<C-n>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
+                -- if cmp.visible() then
                     cmp.select_next_item()
-                elseif vim.fn["vsnip#available"](1) == 1 then
-                    feedkey("<Plug>(vsnip-expand-or-jump)", "")
-                elseif has_words_before() then
-                    cmp.complete()
-                else
-                    fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-                end
-            end, { "i", "s" }),
+                -- elseif vim.fn["vsnip#available"](1) == 1 then
+                --     feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                -- elseif has_words_before() then
+                    -- cmp.complete()
+                -- else
+                    -- fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                -- end
+                end, { "i", "s" }),
             
             ["<C-p>"] = cmp.mapping(function()
-                if cmp.visible() then
+                -- if cmp.visible() then
                     cmp.select_prev_item()
-                elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                    feedkey("<Plug>(vsnip-jump-prev)", "")
-                end
-            end, { "i", "s" }),
+                -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                --     feedkey("<Plug>(vsnip-jump-prev)", "")
+                -- end
+                end, { "i", "s" }),
             },
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'path' },
-                { name = 'vsnip' }, -- For vsnip users.
+                -- { name = 'vsnip' }, -- For vsnip users.
                 -- { name = 'luasnip' }, -- For luasnip users.
-                -- { name = 'ultisnips' }, -- For ultisnips users.
+                { name = 'ultisnips' }, -- For ultisnips users.
                 -- { name = 'snippy' }, -- For snippy users.
-            })
+                })
             })
 
             -- Setup lspconfig.
@@ -153,46 +172,59 @@ return{
             'hrsh7th/nvim-cmp',
         },
     },
-    {
-        'hrsh7th/cmp-vsnip',
-        event = "InsertEnter",
-        dependencies = {
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/vim-vsnip',
-        },
-    },
-    {
-        'hrsh7th/vim-vsnip',
-        event = "InsertEnter",
-        dependencies = {
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-vsnip',
-        },
-    },
-    {
-        'hrsh7th/vim-vsnip-integ',
-        event = "InsertEnter",
-        dependencies = {
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-        },
-    },
-    {
-        'rafamadriz/friendly-snippets',
-        event = "InsertEnter",
-        dependencies = {
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/vim-vsnip-integ',
-        },
-    },
+    -- {
+    --     'hrsh7th/cmp-vsnip',
+    --     event = "InsertEnter",
+    --     dependencies = {
+    --         'hrsh7th/nvim-cmp',
+    --         'hrsh7th/vim-vsnip',
+    --     },
+    -- },
+    -- {
+    --     'hrsh7th/vim-vsnip',
+    --     event = "InsertEnter",
+    --     dependencies = {
+    --         'hrsh7th/nvim-cmp',
+    --         'hrsh7th/cmp-vsnip',
+    --     },
+    -- },
+    -- {
+    --     'hrsh7th/vim-vsnip-integ',
+    --     event = "InsertEnter",
+    --     dependencies = {
+    --         'hrsh7th/nvim-cmp',
+    --         'hrsh7th/cmp-vsnip',
+    --         'hrsh7th/vim-vsnip',
+    --     },
+    -- },
+    -- {
+    --     'rafamadriz/friendly-snippets',
+    --     event = "InsertEnter",
+    --     dependencies = {
+    --         'hrsh7th/nvim-cmp',
+    --         'hrsh7th/cmp-vsnip',
+    --         'hrsh7th/vim-vsnip',
+    --         'hrsh7th/vim-vsnip-integ',
+    --     },
+    -- },
     {
         'hrsh7th/cmp-path',
         event = "InsertEnter",
         dependencies = {
             'hrsh7th/nvim-cmp',
         },
+    },
+    {
+        "quangnguyen30192/cmp-nvim-ultisnips",
+        event = "InsertEnter",
+        config = function()
+          -- optional call to setup (see customization section)
+          require("cmp_nvim_ultisnips").setup{
+              filetype_source = "treesitter",
+              show_snippets = "all",
+          }
+        end,
+    -- If you want to enable filetype detection based on treesitter:
+    -- requires = { "nvim-treesitter/nvim-treesitter" },
     },
 }

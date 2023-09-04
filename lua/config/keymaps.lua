@@ -34,9 +34,9 @@ vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { noremap = true })
 vim.cmd("tnoremap <silent> <C-n> <C-\\><C-n>")
-vim.cmd([[
-    imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-    smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-    imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-    smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-]])
+-- vim.cmd([[
+--     imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+--     smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+--     imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+--     smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+-- ]])
