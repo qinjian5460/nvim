@@ -111,7 +111,7 @@ return{
             ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             ["<C-n>"] = cmp.mapping(function(fallback)
                 -- if cmp.visible() then
-                    cmp.select_next_item()
+                cmp.select_next_item()
                 -- elseif vim.fn["vsnip#available"](1) == 1 then
                 --     feedkey("<Plug>(vsnip-expand-or-jump)", "")
                 -- elseif has_words_before() then
@@ -123,7 +123,7 @@ return{
             
             ["<C-p>"] = cmp.mapping(function()
                 -- if cmp.visible() then
-                    cmp.select_prev_item()
+                cmp.select_prev_item()
                 -- elseif vim.fn["vsnip#jumpable"](-1) == 1 then
                 --     feedkey("<Plug>(vsnip-jump-prev)", "")
                 -- end
@@ -221,7 +221,7 @@ return{
           -- optional call to setup (see customization section)
           require("cmp_nvim_ultisnips").setup{
               filetype_source = "treesitter",
-              show_snippets = "all",
+              -- show_snippets = "all",
           }
         end,
     -- If you want to enable filetype detection based on treesitter:

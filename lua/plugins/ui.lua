@@ -5,7 +5,7 @@ return{
             require('lualine').setup {
                 options = {
                     icons_enabled = true,
-                    theme = 'horizon',
+                    theme = 'tokyonight',
                     globalstatus=true,
                     component_separators = { left = '', right = ''},
                     section_separators = { left = '', right = ''},
