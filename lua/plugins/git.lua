@@ -3,6 +3,7 @@ return{
         "sindrets/diffview.nvim",
         -- cmd = "DiffviewToggleFiles",
         keys = {"<leader>g"},
+        cmd = "DiffviewOpen",
     },
     {
         "kdheepak/lazygit.nvim",

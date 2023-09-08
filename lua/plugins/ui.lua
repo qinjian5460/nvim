@@ -119,29 +119,39 @@ return{
         end
     },
     {
-        'nvim-tree/nvim-tree.lua',
-        cmd = "NvimTreeToggle",
-        config = function()
-            vim.g.loaded_netrw = 1
-            vim.g.loaded_netrwPlugin = 1
-
-            -- set termguicolors to enable highlight groups
-            vim.opt.termguicolors = true
-
-            require("nvim-tree").setup({
-            sort_by = "case_sensitive",
-            view = {
-                width = 30,
-            },
-            renderer = {
-                group_empty = true,
-            },
-            filters = {
-                dotfiles = true,
-            },
-            })
-        end
+        "nvim-neo-tree/neo-tree.nvim",
+        cmd = "Neotree",
+        branch = "v3.x",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+          "MunifTanjim/nui.nvim",
+        }
     },
+    -- {
+    --     'nvim-tree/nvim-tree.lua',
+    --     cmd = "NvimTreeToggle",
+    --     config = function()
+    --         vim.g.loaded_netrw = 1
+    --         vim.g.loaded_netrwPlugin = 1
+    --
+    --         -- set termguicolors to enable highlight groups
+    --         vim.opt.termguicolors = true
+    --
+    --         require("nvim-tree").setup({
+    --         sort_by = "case_sensitive",
+    --         view = {
+    --             width = 30,
+    --         },
+    --         renderer = {
+    --             group_empty = true,
+    --         },
+    --         filters = {
+    --             dotfiles = true,
+    --         },
+    --         })
+    --     end
+    -- },
     {
         'lewis6991/gitsigns.nvim',
         option = function()
@@ -335,5 +345,79 @@ return{
       end,
       opts = {
       }  
+    },
+    {
+        "simrat39/symbols-outline.nvim",
+        cmd = "SymbolsOutline",
+        opts={},
+    },
+    {
+        'akinsho/toggleterm.nvim', 
+        cmd = "ToggleTerm",
+        version = "*", 
+        opts = {--[[ things you want to change go here]]},
+    },
+    {
+        "folke/edgy.nvim",
+        event = "VeryLazy",
+        init = function()
+          vim.opt.laststatus = 3
+          vim.opt.splitkeep = "screen"
+        end,
+        opts = {
+            close_when_all_hidden = false,
+            bottom = {
+                        "Trouble",
+                        {
+                          ft = "toggleterm",
+                          size = { height = 0.2 },
+                          -- exclude floating windows
+                          filter = function(buf, win)
+                            return vim.api.nvim_win_get_config(win).relative == ""
+                          end,
+                        },
+                        {
+                            ft = "help",
+                            size = { height = 20 },
+                            -- only show help buffers
+                            filter = function(buf)
+                              return vim.bo[buf].buftype == "help"
+                            end,
+                        },
+            },
+            left = {
+                {
+                  title = "Neo-Tree",
+                  ft = "neo-tree",
+                  filter = function(buf)
+                    return vim.b[buf].neo_tree_source == "filesystem"
+                  end,
+                  size = { height = 0.5 },
+                },
+                {
+                  ft = "Outline",
+                  pinned = true,
+                  open = "SymbolsOutline",
+                },
+                -- {
+                --   title = "Neo-Tree Git",
+                --   ft = "neo-tree",
+                --   filter = function(buf)
+                --     return vim.b[buf].neo_tree_source == "git_status"
+                --   end,
+                --   pinned = true,
+                --   open = "Neotree position=right git_status",
+                -- },
+                -- {
+                --   title = "Neo-Tree Buffers",
+                --   ft = "neo-tree",
+                --   filter = function(buf)
+                --     return vim.b[buf].neo_tree_source == "buffers"
+                --   end,
+                --   pinned = true,
+                --   open = "Neotree position=top buffers",
+                -- },
+            },
+        }
     },
 }
