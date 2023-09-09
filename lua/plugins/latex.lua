@@ -1,7 +1,7 @@
 return{
     {
         'lervag/vimtex',
-        -- ft = "tex",
+        ft = "tex",
         config = function()
             vim.cmd([[
                 filetype plugin indent on

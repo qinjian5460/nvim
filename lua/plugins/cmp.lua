@@ -227,4 +227,9 @@ return{
     -- If you want to enable filetype detection based on treesitter:
     -- requires = { "nvim-treesitter/nvim-treesitter" },
     },
+    -- {
+    --     "folke/neodev.nvim", 
+    --     event = "InsertEnter",
+    --     opts = {},
+    -- },
 }

@@ -163,7 +163,10 @@ return{
                         { bg = "#2a3740", fg = "#8a8a8a" },
                         { bg = "#332e4a", fg = "#8a8a8a" },
                     },
-                }
+                },
+                line_num = {
+                    enable = false,
+                },
             })
           end
       },

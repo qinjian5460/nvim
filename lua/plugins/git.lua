@@ -13,4 +13,15 @@ return{
             "nvim-lua/plenary.nvim",
         },
     },
+    {
+        'lewis6991/gitsigns.nvim',
+        -- option = function()
+        --     require('gitsigns').setup()
+        -- end
+        config = function ()
+            require('gitsigns').setup{
+                current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+            }
+        end,
+    },
 }

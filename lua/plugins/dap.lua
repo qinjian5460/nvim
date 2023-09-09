@@ -119,7 +119,7 @@ return{
                     request = 'launch';
                     name = "Launch file";
                     program = "${file}"; -- This configuration will launch the current file if used.
-                    pythonPath = '/opt/homebrew/Cellar/python@3.11/3.11.4/bin/python3'--function()
+                    pythonPath = '/opt/homebrew/Cellar/python@3.11/3.11.4_1/bin/python3'--function()
                 },
                 }
                 dap.adapters["local-lua"] = {

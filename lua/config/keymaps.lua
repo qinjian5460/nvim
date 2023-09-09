@@ -4,7 +4,8 @@ vim.keymap.set("n", "L", "$", {noremap = true})
 vim.keymap.set("v", "H", "^", {noremap = true})
 vim.keymap.set("v", "L", "$", {noremap = true})
 -- vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>:setlocal winhighlight=Normal:InactiveWindow<CR>", {noremap = true})
-vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>:setlocal winhighlight=Normal:InactiveWindow<CR>", {noremap = true})
+-- vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>:setlocal winhighlight=Normal:InactiveWindow<CR>", {noremap = true})
+vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>r", ":RnvimrToggle<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>c", ":Trouble document_diagnostics<CR>:setlocal winhighlight=Normal:ActiveWindow<CR>", {noremap = true})
 vim.keymap.set("", "<up>", ":res +5<CR>", {noremap = true})
@@ -38,6 +39,7 @@ vim.keymap.set("n", "<leader>/t", ":Telescope live_grep theme=dropdown<CR>", { n
 vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>gf", ":DiffviewFileHistory<CR>", { noremap = true })
 vim.cmd("tnoremap <silent> <C-n> <C-\\><C-n>")
 -- vim.cmd([[
 --     imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
