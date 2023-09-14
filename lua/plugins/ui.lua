@@ -277,7 +277,7 @@ return{
         config = function()
             require("lspsaga").setup{
             outline = {
-                win_position = "right",
+                win_position = "left",
                 win_with = "",
                 win_width = 30,
                 preview_width= 0.4,
@@ -285,6 +285,7 @@ return{
                 auto_preview = true,
                 auto_refresh = true,
                 auto_close = true,
+                layout = 'float',
                 custom_sort = nil,
                 keys = {
                 expand_or_jump = 'o',

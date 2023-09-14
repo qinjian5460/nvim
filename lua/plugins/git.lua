@@ -5,14 +5,14 @@ return{
         keys = {"<leader>g"},
         cmd = "DiffviewOpen",
     },
-    {
-        "kdheepak/lazygit.nvim",
-        cmd = "LazyGit",
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
+    -- {
+    --     "kdheepak/lazygit.nvim",
+    --     cmd = "LazyGit",
+    --     -- optional for floating window border decoration
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    -- },
     {
         'lewis6991/gitsigns.nvim',
         -- option = function()
