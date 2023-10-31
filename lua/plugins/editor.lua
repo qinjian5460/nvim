@@ -186,6 +186,10 @@ return{
               ]])
           end
       },
+      {
+          "uga-rosa/translate.nvim",
+          cmd = { "Translate" },
+      },
       -- {
       --   'declancm/cinnamon.nvim',
       --   event = { "UIEnter" },
@@ -193,4 +197,15 @@ return{
       --       require('cinnamon').setup() 
       --   end  
       -- },
+      {
+        "amrbashir/nvim-docs-view",
+        opt = true,
+        cmd = { "DocsViewToggle" },
+        config = function()
+          require("docs-view").setup {
+            position = "right",
+            width = 40,
+          }
+        end
+      },
 }

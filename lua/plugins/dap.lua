@@ -43,10 +43,10 @@ return{
                 layouts = {
                     {
                     elements = {
-                        { id = "scopes", size = 0.25 },
-                        "breakpoints",
-                        "stacks",
                         "watches",
+                        "stacks",
+                        "breakpoints",
+                        { id = "scopes", size = 0.25 },
                     },
                     size = 40, -- 40 columns
                     position = "left",

@@ -325,14 +325,14 @@ return{
         event = "InsertEnter",
         config = function()
             require("notify").setup({
-                background_colour="#000000"
+                background_colour="#24283a"
             })
         end
     },
     {
         "folke/noice.nvim",
         -- event = "VeryLazy",
-        event = "InsertEnter",
+        -- event = "InsertEnter",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
@@ -383,6 +383,9 @@ return{
         end,
         opts = {
             close_when_all_hidden = false,
+            right = {
+                "nvim-docs-view",
+            },
             bottom = {
                         "Trouble",
                         {
@@ -437,4 +440,13 @@ return{
             },
         }
     },
+    {
+        'famiu/bufdelete.nvim',
+    },
+    -- {
+    --     "tiagovla/scope.nvim",
+    --     config = function ()
+    --         require("scope").setup({})
+    --     end
+    -- },
 }
