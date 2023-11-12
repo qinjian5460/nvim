@@ -44,9 +44,12 @@ return{
                     {
                     elements = {
                         "watches",
-                        "stacks",
+                        -- "stacks",
                         "breakpoints",
+                        "stacks",
                         { id = "scopes", size = 0.25 },
+                        -- "breakpoints",
+                        -- "watches",
                     },
                     size = 40, -- 40 columns
                     position = "left",
@@ -155,6 +158,30 @@ return{
                       },
                     },
                 }
+                -- dap.adapters.codelldb = {
+                --   type = 'server',
+                --   port = "${port}",
+                --   executable = {
+                --     -- CHANGE THIS to your path!
+                --     command = '/Users/weiyiqin/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/adapter/codelldb',
+                --     args = {"--port", "${port}"},
+                -- 
+                --     -- On windows you may have to uncomment this:
+                --     -- detached = false,
+                --   }
+                -- }
+                -- dap.configurations.rust = {
+                --   {
+                --     name = "Launch file",
+                --     type = "codelldb",
+                --     request = "launch",
+                --     program = function()
+                --       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                --     end,
+                --     cwd = '${workspaceFolder}',
+                --     stopOnEntry = true,
+                --   },
+                -- }
                 -- require("dapui").setup()
                 -- require("mason-nvim-dap").setup()
                 -- require("nvim-dap-virtual-text").setup {
