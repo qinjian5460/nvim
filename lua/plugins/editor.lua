@@ -170,22 +170,22 @@ return{
             })
           end
       },
-      {
-          "mg979/vim-visual-multi",
-          keys = { "<leader><C-n>", },
-          config = function ()
-                vim.keymap.set("n", "<leader><C-n>", "<Plug>(VM-Add-Cursor-At-Pos)", { noremap = true })
-              vim.cmd([[
-                let g:VM_maps = {}
-                let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
-                let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
-                let g:VM_maps["Select l"]           = '<S-Right>'       " start selecting left
-                let g:VM_maps["Select h"]           = '<S-Left>'        " start selecting right
-                let g:VM_maps["Select Cursor Down"] = '<C-n>'      " start selecting down
-                let g:VM_maps["Select Cursor Up"]   = '<C-p>'        " start selecting up
-              ]])
-          end
-      },
+      -- {
+      --     "mg979/vim-visual-multi",
+      --     keys = { "<leader><C-n>", },
+      --     config = function ()
+      --           vim.keymap.set("n", "<leader><C-n>", "<Plug>(VM-Add-Cursor-At-Pos)", { noremap = true })
+      --         vim.cmd([[
+      --           let g:VM_maps = {}
+      --           let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+      --           let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+      --           let g:VM_maps["Select l"]           = '<S-Right>'       " start selecting left
+      --           let g:VM_maps["Select h"]           = '<S-Left>'        " start selecting right
+      --           let g:VM_maps["Select Cursor Down"] = '<C-n>'      " start selecting down
+      --           let g:VM_maps["Select Cursor Up"]   = '<C-p>'        " start selecting up
+      --         ]])
+      --     end
+      -- },
       {
           "uga-rosa/translate.nvim",
           cmd = { "Translate" },

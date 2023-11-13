@@ -31,6 +31,7 @@ require("lazy").setup({
     require("plugins.latex"),
     require("plugins.tmux"),
     require("plugins.rust"),
+    require("plugins.format"),
     -- require("plugins.firenvim"),
     -- require("plugins.remote"),
 })

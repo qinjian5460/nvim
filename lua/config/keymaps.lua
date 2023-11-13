@@ -6,7 +6,7 @@ vim.keymap.set("v", "L", "$", {noremap = true})
 -- vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>:setlocal winhighlight=Normal:InactiveWindow<CR>", {noremap = true})
 -- vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>:setlocal winhighlight=Normal:InactiveWindow<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>", {noremap = true})
-vim.keymap.set("n", "<leader>r", ":RnvimrToggle<CR>", {noremap = true})
+vim.keymap.set("n", "<leader>r", ":Ranger<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>c", ":Trouble document_diagnostics<CR>:setlocal winhighlight=Normal:ActiveWindow<CR>", {noremap = true})
 vim.keymap.set("", "<up>", ":res +5<CR>", {noremap = true})
 vim.keymap.set("", "<down>", ":res -5<CR>", {noremap = true})
@@ -37,13 +37,13 @@ vim.keymap.set("n", "<leader>iw", ":Lspsaga show_workspace_diagnostics<CR>", {no
 vim.keymap.set("n", "<leader>ih", ":Lspsaga hover_doc<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>dz", ":DapContinue<CR>", {noremap = true})
 vim.keymap.set("n", "<leader>d=", ":DapToggleBreakpoint<CR>", {noremap = ture})
-vim.keymap.set("n", "<leader>/f", ":Telescope fd theme=dropdown<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/w", ":Telescope grep_string theme=dropdown<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/p", ":Telescope projects<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/t", ":Telescope live_grep theme=dropdown<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/u", ":Telescope undo theme=dropdown<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/d", ":Telescope diagnostics theme=dropdown<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/v", ":VenvSelect<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>/f", ":Telescope fd theme=dropdown<CR>", { noremap = true })               
+vim.keymap.set("n", "<leader>/w", ":Telescope grep_string theme=dropdown<CR>", { noremap = true })      
+vim.keymap.set("n", "<leader>/p", ":Telescope projects<CR>", { noremap = true })                        
+vim.keymap.set("n", "<leader>/t", ":Telescope live_grep theme=dropdown<CR>", { noremap = true })        
+vim.keymap.set("n", "<leader>/u", ":Telescope undo theme=dropdown<CR>", { noremap = true })             
+vim.keymap.set("n", "<leader>/d", ":Telescope diagnostics theme=dropdown<CR>", { noremap = true })      
+vim.keymap.set("n", "<leader>/v", ":VenvSelect<CR>", { noremap = true })                                
 -- vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>go", ":DiffviewOpen<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { noremap = true })
@@ -60,3 +60,28 @@ vim.cmd("tnoremap <silent> <C-n> <C-\\><C-n>")
 --     imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 --     smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 -- ]])
+
+-- vim.cmd('autocmd BufEnter * lua file_type_keymap()')
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = '*',
+    callback = function ()
+    local file_type = vim.bo.filetype
+        if file_type == 'rust' then
+            vim.keymap.set("n", "<leader>ud", ":RustDebuggables<CR>", { noremap = true })
+            vim.keymap.set("n", "<leader>ur", ":RustRunables<CR>", { noremap = true })
+            vim.keymap.set({"n", "v"}, "<leader>uf", ":Format<CR>", { noremap = true })
+        elseif file_type == 'python' then
+            vim.keymap.set({"n", "v"}, "<leader>uf", ":Format<CR>", { noremap = true })
+        end
+    end,
+})
+-- function file_type_keymap()
+--     local file_type = vim.bo.filetype
+--         if file_type == 'rust' then
+--             vim.keymap.set("n", "<leader>u", ":Mason<CR>", { noremap = true })
+--         elseif file_type == 'python' then
+--             vim.keymap.set("n", "<leader>u", ":LspInfo<CR>", { noremap = true })
+--         elseif file_type == 'lua' then 
+--             vim.keymap.set("n", "<leader>u", ":Lspsaga<CR>", { noremap = true })
+--         end
+-- end

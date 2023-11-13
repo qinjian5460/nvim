@@ -36,50 +36,50 @@ return{
     -- {
     --     'mbbill/undotree',
     -- },
+    -- {
+    --     'kevinhwang91/rnvimr',
+    --     cmd = "RnvimrToggle",
+    --     config = function()
+    --         vim.cmd("let g:rnvimr_enable_ex = 1")
+    --         vim.cmd("let g:rnvimr_enable_picker = 1")
+    --         vim.cmd("let g:rnvimr_draw_border = 1")
+    --         vim.cmd("let g:rnvimr_hide_gitignore = 1")
+    --         vim.cmd("let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}")
+    --         vim.cmd("let g:rnvimr_enable_bw = 1")
+    --         vim.cmd("highlight link RnvimrNormal CursorLine")
+    --         vim.cmd([[
+    --             nnoremap <silent> <M-o> :RnvimrToggle<CR>
+    --             tnoremap <silent> <M-o> <C-\><C-n>:RnvimrToggle<CR>
+    --
+    --             tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
+    --
+    --             tnoremap <silent> <M-l> <C-\><C-n>:RnvimrResize 1,8,9,11,5<CR>
+    --
+    --             tnoremap <silent> <M-y> <C-\><C-n>:RnvimrResize 6<CR>
+    --
+    --             let g:rnvimr_action = {
+    --                     \ '<C-t>': 'NvimEdit tabedit',
+    --                     \ '<C-x>': 'NvimEdit split',
+    --                     \ '<C-v>': 'NvimEdit vsplit',
+    --                     \ 'gw': 'JumpNvimCwd',
+    --                     \ 'yw': 'EmitRangerCwd'
+    --                     \ }
+    --
+    --             let g:rnvimr_layout = { 'relative': 'editor',
+    --                     \ 'width': float2nr(round(0.6 * &columns)),
+    --                     \ 'height': float2nr(round(0.6 * &lines)),
+    --                     \ 'col': float2nr(round(0.2 * &columns)),
+    --                     \ 'row': float2nr(round(0.2 * &lines)),
+    --                     \ 'style': 'minimal' }
+    --         ]])
+    --                 end
+    --             },
     {
-        'kevinhwang91/rnvimr',
-        cmd = "RnvimrToggle",
-        config = function()
-            vim.cmd("let g:rnvimr_enable_ex = 1")
-            vim.cmd("let g:rnvimr_enable_picker = 1")
-            vim.cmd("let g:rnvimr_draw_border = 1")
-            vim.cmd("let g:rnvimr_hide_gitignore = 1")
-            vim.cmd("let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}")
-            vim.cmd("let g:rnvimr_enable_bw = 1")
-            vim.cmd("highlight link RnvimrNormal CursorLine")
-            vim.cmd([[
-                nnoremap <silent> <M-o> :RnvimrToggle<CR>
-                tnoremap <silent> <M-o> <C-\><C-n>:RnvimrToggle<CR>
-
-                tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
-
-                tnoremap <silent> <M-l> <C-\><C-n>:RnvimrResize 1,8,9,11,5<CR>
-
-                tnoremap <silent> <M-y> <C-\><C-n>:RnvimrResize 6<CR>
-
-                let g:rnvimr_action = {
-                        \ '<C-t>': 'NvimEdit tabedit',
-                        \ '<C-x>': 'NvimEdit split',
-                        \ '<C-v>': 'NvimEdit vsplit',
-                        \ 'gw': 'JumpNvimCwd',
-                        \ 'yw': 'EmitRangerCwd'
-                        \ }
-
-                let g:rnvimr_layout = { 'relative': 'editor',
-                        \ 'width': float2nr(round(0.6 * &columns)),
-                        \ 'height': float2nr(round(0.6 * &lines)),
-                        \ 'col': float2nr(round(0.2 * &columns)),
-                        \ 'row': float2nr(round(0.2 * &lines)),
-                        \ 'style': 'minimal' }
-            ]])
-                    end
-                },
-                {
-                    'gelguy/wilder.nvim',
-                    keys = {
-                        { ":", },
-                        {"/"}
-                    },
+        'gelguy/wilder.nvim',
+            keys = {
+                { ":", },
+                {"/"}
+            },
                     config = function()
                         vim.cmd([[
                 call wilder#setup({
@@ -442,6 +442,29 @@ return{
     },
     {
         'famiu/bufdelete.nvim',
+    },
+    {
+          "kelly-lin/ranger.nvim",
+           cmd = "Ranger",
+           config = function()
+             require("ranger-nvim").setup({ 
+                 enable_cmds = true,
+                 replace_netrw = true,
+                   ui = {
+                     border = "rounded",
+                     height = 0.8,
+                     width = 0.8,
+                     x = 0.5,
+                     y = 0.5,
+                   }
+             })
+             vim.api.nvim_set_keymap("n", "<leader>ef", "", {
+               noremap = true,
+               callback = function()
+                 require("ranger-nvim").open(true)
+               end,
+             })
+           end,
     },
     -- {
     --     "tiagovla/scope.nvim",
